@@ -23,16 +23,18 @@
 ## Where things live
 
 - `artifacts/mountain-history-map/src/App.tsx` — 地図画面と山詳細画面のルーティング
-- `artifacts/mountain-history-map/src/components/japan-map.tsx` — 外部サービスに依存しない日本地図と富士山マーカー
+- `artifacts/mountain-history-map/src/components/japan-map.tsx` — MapLibre GL JSによる日本地図と山マーカー
 - `artifacts/mountain-history-map/src/data/mountains.ts` — 将来の全国展開を見据えた山データ
+- `artifacts/mountain-history-map/src/data/japan.json` — 実際の日本列島GeoJSONデータ
 - `artifacts/mountain-history-map/src/pages/mountain-detail.tsx` — 山の詳細コンテンツ表示
 - `artifacts/mountain-history-map/src/index.css` — 和紙・深い藍・朱を軸にしたテーマ
 
 ## Architecture decisions
 
 - MVPではDB・ログイン・外部地図APIを使わず、富士山の静的データで画面体験を優先する。
-- 地図はインラインSVGで表現し、外部サービスのキーや読み込み状態に左右されないようにする。
-- 山の情報は配列データとして分離し、詳細画面はIDで山を取得する。
+- 地図はMapLibre GL JSとアプリ内GeoJSONで描画し、背景タイルやAPIキーに依存しない。
+- WebGL2非対応環境では、同じGeoJSONから描画した互換表示に切り替えて画面全体のエラーを防ぐ。
+- 山の情報は緯度・経度を含む配列データとして分離し、詳細画面はIDで山を取得する。
 - Wouterで地図と `/mountains/:id` の詳細画面を切り替える。
 
 ## Product

@@ -8,6 +8,8 @@ export type Mountain = {
   id: string;
   name: string;
   reading: string;
+  latitude: number;
+  longitude: number;
   prefectures: string;
   elevation: string;
   region: string;
@@ -25,6 +27,8 @@ export const mountains: Mountain[] = [
     id: 'fuji',
     name: '富士山',
     reading: 'ふじさん',
+    latitude: 35.3606,
+    longitude: 138.7274,
     prefectures: '山梨県・静岡県',
     elevation: '3,776m',
     region: '中部地方',
