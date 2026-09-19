@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "山岳歴史マップ"
+description = "日本の山岳信仰と歴史を学びながら登山を楽しめるスマートフォン向けWebアプリ。MVPでは富士山の位置、歴史、信仰、登山道、歴史スポットを紹介します。"
+version = "1.0.0"
+id = "artifacts/mountain-history-map"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20485
+
+[services.development]
+run = "pnpm --filter @workspace/mountain-history-map run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mountain-history-map", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mountain-history-map/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20485"
+BASE_PATH = "/"
