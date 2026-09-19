@@ -147,14 +147,6 @@
   outline: none;
 }
 
-.map-fallback-land {
-  fill: #d6ded5;
-  fill-rule: evenodd;
-  stroke: #778c8b;
-  stroke-linejoin: round;
-  stroke-width: 0.18;
-}
-
 .mountain-map-marker {
   position: relative;
   width: 86px;
